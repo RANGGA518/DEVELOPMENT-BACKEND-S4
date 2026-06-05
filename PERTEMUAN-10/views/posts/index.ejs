@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Daftar Posts - CRUD Express JS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body style="background: lightgray">
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+
+                <% if (messages.success) { %>
+                    <div class="alert alert-success" role="alert">
+                        <%= messages.success %>
+                    </div>
+                <% } %>
+
+                <% if (messages.error) { %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= messages.error %>
+                    </div>
+                <% } %>
+
+                <div class="card border-0 shadow rounded">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="mb-0">DATA POSTS</h5>
+                            <a href="/posts/create" class="btn btn-md btn-success">TAMBAH POST</a>
+                        </div>
+                        
+                        <table class="table table-bordered">
+                            <thead>
+                              <tr>
+                                <th scope="col">NO.</th>
+                                <th scope="col">TITLE</th>
+                                <th scope="col">CONTENT</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% if(data.length){                  
+                                    for(var i = 0; i< data.length; i++) { %>
+                                        <tr>
+                                            <th scope="row"><%= (i+1) %></th>
+                                            <td><%= data[i].nama_produk %></td> 
+<td><%= data[i].deskripsi %></td>
+                                        </tr>
+                                    <% }
+                                 } else { %>
+                                     <tr>
+                                        <td colspan="3" class="text-center">
+                                            <div class="alert alert-danger mb-0">
+                                                Data Masih Kosong!
+                                            </div>
+                                        </td>
+                                     </tr>
+                                 <% } %>
+                            </tbody>
+                          </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
